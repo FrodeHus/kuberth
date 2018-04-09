@@ -1,0 +1,11 @@
+apiVersion: kuberth.io/v1alpha1
+kind: DnsEntry
+metadata:
+  name: pepperprovesapoint.com
+spec:
+  - name: www
+    type: cname
+    value: home.pepperprovesapoint.com.
+  - name: test
+    type: a
+    value: 1.2.3.4

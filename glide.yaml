@@ -1,0 +1,28 @@
+package: github.com/frodehus/kuberth
+import:
+- package: github.com/appscode/go-dns
+  version: ^0.1.0
+- package: github.com/golang/glog
+- package: k8s.io/apimachinery
+  subpackages:
+  - pkg/api/errors
+  - pkg/apis/meta/v1
+  - pkg/conversion
+  - pkg/labels
+  - pkg/runtime
+  - pkg/runtime/schema
+  - pkg/runtime/serializer
+  - pkg/types
+  - pkg/watch
+- package: k8s.io/client-go
+  version: ^7.0.0
+  subpackages:
+  - discovery
+  - discovery/fake
+  - kubernetes
+  - rest
+  - testing
+  - tools/cache
+  - tools/clientcmd
+  - util/flowcontrol
+- package: k8s.io/code-generator
