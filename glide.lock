@@ -1,16 +1,33 @@
-hash: 56858c90789bae0502cdf2799d4fffe4a62f65bfc20819836f1e92cd8c30386e
-updated: 2018-04-11T01:06:38.5650429+02:00
+hash: ed29b84a882086c0723ae44813b2b1b96aa0a6426ed1c68dab741839c487e607
+updated: 2018-04-13T03:00:58.3869149+02:00
 imports:
-- name: github.com/appscode/go
-  version: 0eb2cabe3897bfd0fe615e9849583a88bcc82df4
-  subpackages:
-  - runtime
+- name: github.com/appscode/envconfig
+  version: 183bbe643a2875eaa69c85627ac6b25813983203
 - name: github.com/appscode/go-dns
   version: 3ab3da3b25cc9a7528c6381513606b5a9bc4ab93
+  subpackages:
+  - azure
+  - provider
+- name: github.com/Azure/azure-sdk-for-go
+  version: 0984e0641ae43b89283223034574d6465be93bf4
+  vcs: git
+  subpackages:
+  - arm/dns
+- name: github.com/Azure/go-autorest
+  version: d4e6b95c12a08b4de2d48b45d5b4d594e5d32fab
+  subpackages:
+  - autorest
+  - autorest/adal
+  - autorest/azure
+  - autorest/date
+  - autorest/to
+  - autorest/validation
 - name: github.com/davecgh/go-spew
   version: 782f4967f2dc4564575ca782fe2d04090b5faca8
   subpackages:
   - spew
+- name: github.com/dgrijalva/jwt-go
+  version: 01aeca54ebda6e0fbfafd0a524d234159c05ec20
 - name: github.com/ghodss/yaml
   version: 73d445a93680fa1a78ae23a5839bad48f32ba1ee
 - name: github.com/gogo/protobuf
@@ -20,6 +37,10 @@ imports:
   - sortkeys
 - name: github.com/golang/glog
   version: 44145f04b68cf362d9c4df2182967c2275eaefed
+- name: github.com/golang/groupcache
+  version: 02826c3e79038b59d737d3b1c0a1d937f71a4433
+  subpackages:
+  - lru
 - name: github.com/golang/protobuf
   version: 1643683e1b54a9e88ad26d98f81400c8c9d9f4f9
   subpackages:
@@ -46,22 +67,41 @@ imports:
   version: 6633656539c1639d9d78127b7d47c622b5d7b6dc
 - name: github.com/json-iterator/go
   version: 13f86432b882000a51c6e610c620974462691a97
+- name: github.com/kelseyhightower/envconfig
+  version: b2c5c876e2659d9060d82e9b8494150d53854cc4
+- name: github.com/miekg/dns
+  version: 01d59357d468872339068bcd5d55a00e2463051f
 - name: github.com/spf13/pflag
   version: 4c012f6dcd9546820e378d0bdda4d8fc772cdfea
+- name: github.com/xenolf/lego
+  version: 2a44f405473b07ef68f2dd77826193582c293fa5
+  repo: https://github.com/appscode/lego.git
+  vcs: git
+  subpackages:
+  - acme
 - name: golang.org/x/crypto
   version: 81e90905daefcd6fd217b62423c0908922eadb30
   subpackages:
+  - ed25519
+  - ed25519/internal/edwards25519
+  - ocsp
   - ssh/terminal
 - name: golang.org/x/net
   version: 1c05540f6879653db88113bc4a2b70aec4bd491f
   subpackages:
+  - bpf
   - context
   - html
   - html/atom
   - http2
   - http2/hpack
   - idna
+  - internal/iana
+  - internal/socket
+  - ipv4
+  - ipv6
   - lex/httplex
+  - publicsuffix
   - websocket
 - name: golang.org/x/sys
   version: 95c6576299259db960f6c5b9b69ea52422860fce
@@ -81,6 +121,11 @@ imports:
   - rate
 - name: gopkg.in/inf.v0
   version: 3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4
+- name: gopkg.in/square/go-jose.v1
+  version: 6e50787b7338112747e64f32753fb4f9dbfb8f79
+  subpackages:
+  - cipher
+  - json
 - name: gopkg.in/yaml.v2
   version: 670d4cfef0544295bc27a114dbac37980d83185a
 - name: k8s.io/api
@@ -146,15 +191,18 @@ imports:
   - pkg/util/framer
   - pkg/util/intstr
   - pkg/util/json
+  - pkg/util/mergepatch
   - pkg/util/net
   - pkg/util/runtime
   - pkg/util/sets
+  - pkg/util/strategicpatch
   - pkg/util/validation
   - pkg/util/validation/field
   - pkg/util/wait
   - pkg/util/yaml
   - pkg/version
   - pkg/watch
+  - third_party/forked/golang/json
   - third_party/forked/golang/reflect
 - name: k8s.io/client-go
   version: 23781f4d6632d88e869066eaebb743857aa1ef9b
@@ -206,6 +254,7 @@ imports:
   - tools/clientcmd/api/v1
   - tools/metrics
   - tools/pager
+  - tools/record
   - tools/reference
   - transport
   - util/buffer
@@ -216,5 +265,9 @@ imports:
   - util/retry
   - util/workqueue
 - name: k8s.io/code-generator
-  version: 6328af583b15738c30d552c02484700b13863cb5
+  version: 76b0f9d5de2624792d501e4c3c59c43a64094325
+- name: k8s.io/kube-openapi
+  version: 50ae88d24ede7b8bad68e23c805b5d3da5c8abaf
+  subpackages:
+  - pkg/util/proto
 testImports: []

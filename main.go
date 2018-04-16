@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"os"
 	"path/filepath"
@@ -15,7 +16,11 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 )
 
+func init(){
+	flag.Parse()
+}
 func main() {
+	glog.Info("Waking up Kuberth...")
 	stopCh := signals.SetupSignalHandler()
 	kubeconfig := filepath.Join(
 		os.Getenv("HOME"), ".kube", "config",
@@ -26,12 +31,9 @@ func main() {
 		log.Fatal(err)
 	}
 	dnsClient, err := kuberth.NewForConfig(config)
-	//kuberthAPI := dnsClient.KuberthV1alpha1()
-	//listOptions := metav1.ListOptions{}
-	//entries, err := kuberthAPI.DnsEntries("default").List(listOptions)
 	informerFactory := informers.NewSharedInformerFactory(dnsClient, time.Second*30)
 	go informerFactory.Start(stopCh)
-	controller := NewController(clientset, dnsClient, informerFactory)
+	controller := NewDNSController(clientset, dnsClient, informerFactory)
 	if err = controller.Run(2, stopCh); err != nil {
 		glog.Fatalf("Error running controller: %s", err.Error())
 	}

@@ -1,7 +1,5 @@
 package: github.com/frodehus/kuberth
 import:
-- package: github.com/appscode/go-dns
-  version: ^0.1.0
 - package: github.com/golang/glog
 - package: k8s.io/apimachinery
   subpackages:
@@ -28,3 +26,4 @@ import:
   - tools/clientcmd
   - util/flowcontrol
 - package: k8s.io/code-generator
+- package: github.com/appscode/envconfig

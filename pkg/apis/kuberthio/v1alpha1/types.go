@@ -1,7 +1,11 @@
 package v1alpha1
 
 import (
+	"fmt"
+
+	"github.com/frodehus/kuberth/azure"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/util/runtime"
 )
 
 // +genclient
@@ -29,4 +33,18 @@ type DnsEntryList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata"`
 	Items           []DnsEntry `json:"items"`
+}
+
+func (d *DnsEntrySpec) CreateOrUpdateRecord() error {
+	dnsProvider, err := azure.NewDNSClient()
+	if err != nil {
+		runtime.HandleError(fmt.Errorf("failed creating DNS provider: %s", err.Error()))
+		return nil
+	}
+	_, err = dnsProvider.LookupRecord(d.Name)
+	if err != nil {
+		runtime.HandleError(fmt.Errorf("failed creating A record: %s", err.Error()))
+		return nil
+	}
+	return nil
 }

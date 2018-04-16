@@ -13,3 +13,17 @@ spec:
     shortNames:
     - dns
     - de
+  validation:
+    openAPIV3Schema:
+      properties:
+        spec:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              value:
+                type: string
