@@ -9,6 +9,7 @@ import (
 
 	"k8s.io/client-go/kubernetes"
 
+	initializers "github.com/frodehus/kuberth/initializers"
 	kuberth "github.com/frodehus/kuberth/pkg/client/clientset/versioned"
 	informers "github.com/frodehus/kuberth/pkg/client/informers/externalversions"
 	"github.com/frodehus/kuberth/pkg/signals"
@@ -16,7 +17,7 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 )
 
-func init(){
+func init() {
 	flag.Parse()
 }
 func main() {
@@ -30,6 +31,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	go initializers.Start(clientset, stopCh)
 	dnsClient, err := kuberth.NewForConfig(config)
 	informerFactory := informers.NewSharedInformerFactory(dnsClient, time.Second*30)
 	go informerFactory.Start(stopCh)

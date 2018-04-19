@@ -29,6 +29,7 @@ func NewDNSClient() (*AzureDNS, error) {
 
 func (d *AzureDNS) LookupRecord(recordName string) (*string, error) {
 	glog.Infof("Retrieving record %s from Azure DNS", recordName)
+	cname := "staas.ukwest.cloudapp.azure.com"
 	token, err := NewServicePrincipalTokenFromCredentials(azure.PublicCloud.ResourceManagerEndpoint, d.TenantId, d.ClientId, d.ClientSecret)
 	if err != nil {
 		return nil, err
@@ -41,7 +42,7 @@ func (d *AzureDNS) LookupRecord(recordName string) (*string, error) {
 		RecordSetProperties: &dns.RecordSetProperties{
 			TTL: to.Int64Ptr(300),
 			CNAMERecord: &dns.CnameRecord{
-				Cname: &recordName,
+				Cname: &cname,
 			},
 		},
 	}
