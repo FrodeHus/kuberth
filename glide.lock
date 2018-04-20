@@ -1,16 +1,10 @@
 hash: ed29b84a882086c0723ae44813b2b1b96aa0a6426ed1c68dab741839c487e607
-updated: 2018-04-13T03:00:58.3869149+02:00
+updated: 2018-04-20T12:50:57.5248339+02:00
 imports:
 - name: github.com/appscode/envconfig
   version: 183bbe643a2875eaa69c85627ac6b25813983203
-- name: github.com/appscode/go-dns
-  version: 3ab3da3b25cc9a7528c6381513606b5a9bc4ab93
-  subpackages:
-  - azure
-  - provider
 - name: github.com/Azure/azure-sdk-for-go
   version: 0984e0641ae43b89283223034574d6465be93bf4
-  vcs: git
   subpackages:
   - arm/dns
 - name: github.com/Azure/go-autorest
@@ -67,41 +61,22 @@ imports:
   version: 6633656539c1639d9d78127b7d47c622b5d7b6dc
 - name: github.com/json-iterator/go
   version: 13f86432b882000a51c6e610c620974462691a97
-- name: github.com/kelseyhightower/envconfig
-  version: b2c5c876e2659d9060d82e9b8494150d53854cc4
-- name: github.com/miekg/dns
-  version: 01d59357d468872339068bcd5d55a00e2463051f
 - name: github.com/spf13/pflag
   version: 4c012f6dcd9546820e378d0bdda4d8fc772cdfea
-- name: github.com/xenolf/lego
-  version: 2a44f405473b07ef68f2dd77826193582c293fa5
-  repo: https://github.com/appscode/lego.git
-  vcs: git
-  subpackages:
-  - acme
 - name: golang.org/x/crypto
   version: 81e90905daefcd6fd217b62423c0908922eadb30
   subpackages:
-  - ed25519
-  - ed25519/internal/edwards25519
-  - ocsp
   - ssh/terminal
 - name: golang.org/x/net
   version: 1c05540f6879653db88113bc4a2b70aec4bd491f
   subpackages:
-  - bpf
   - context
   - html
   - html/atom
   - http2
   - http2/hpack
   - idna
-  - internal/iana
-  - internal/socket
-  - ipv4
-  - ipv6
   - lex/httplex
-  - publicsuffix
   - websocket
 - name: golang.org/x/sys
   version: 95c6576299259db960f6c5b9b69ea52422860fce
@@ -121,11 +96,6 @@ imports:
   - rate
 - name: gopkg.in/inf.v0
   version: 3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4
-- name: gopkg.in/square/go-jose.v1
-  version: 6e50787b7338112747e64f32753fb4f9dbfb8f79
-  subpackages:
-  - cipher
-  - json
 - name: gopkg.in/yaml.v2
   version: 670d4cfef0544295bc27a114dbac37980d83185a
 - name: k8s.io/api
@@ -265,7 +235,7 @@ imports:
   - util/retry
   - util/workqueue
 - name: k8s.io/code-generator
-  version: 76b0f9d5de2624792d501e4c3c59c43a64094325
+  version: d6c69924e190ab651ffbd9ed42912eaa74a4e76b
 - name: k8s.io/kube-openapi
   version: 50ae88d24ede7b8bad68e23c805b5d3da5c8abaf
   subpackages:

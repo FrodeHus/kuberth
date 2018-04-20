@@ -14,6 +14,7 @@ import (
 	informers "github.com/frodehus/kuberth/pkg/client/informers/externalversions"
 	"github.com/frodehus/kuberth/pkg/signals"
 	"github.com/golang/glog"
+	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 )
 
@@ -27,6 +28,10 @@ func main() {
 		os.Getenv("HOME"), ".kube", "config",
 	)
 	config, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
+	if err != nil {
+		glog.Info("Failed to init using kubeconfig, assuming in-cluster...")
+		config, err = rest.InClusterConfig()
+	}
 	clientset, err := kubernetes.NewForConfig(config)
 	if err != nil {
 		log.Fatal(err)
